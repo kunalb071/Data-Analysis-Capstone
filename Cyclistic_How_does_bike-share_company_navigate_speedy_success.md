@@ -8,7 +8,7 @@ Date: '20-08/2023'
 # Case study: How does a bike-share company navigate speedy success
 
 **Author:** Kunal Bhatt
-**Date:**20-08/2023
+**Date:**20-08-2023
 
 
 
@@ -77,7 +77,7 @@ FROM
     
 ```
 
-![Image: Total rows in raw data](./screenshots/row_count_cropped.jpg)
+![Image: Total rows in raw data](./row_count_cropped.jpg)
 
 3.  Since GPS (latitude and longitude) data can have similar fractional data of same location, this has been verified and transformed into average values and exported into csv file (avg_start_station, avg_end_station) and imported as avg_start_station and avg_end_station tables in the database for easier management of location data.
 
@@ -98,7 +98,7 @@ GROUP BY
     
 ```
 
-![Image: Checking for multiple GPS values of the same location](./screenshots/duplicate_locations_cleanup_cropped.jpg)
+![Image: Checking for multiple GPS values of the same location](./duplicate_locations_cleanup_cropped.jpg)
 
 Above mentioned procedure has been executed for the end_station_name column as well.
 
@@ -124,11 +124,11 @@ Result obtained from this query was saved as a csv file (avg_start_station_gps.c
 
 4.  There has been some discrepancies regarding ride duration. Some of the ride durations came out negative (83 rows) and these were left out in the final cleaning query.
 
-    ![Image: Negative ride durations](./screenshots/rides_negative_duration.jpg)
+    ![Image: Negative ride durations](./rides_negative_duration.jpg)
 
     Moreover, since there are full-day passes for casual riders, there has been 4198 entries of rides more than 24 hour duration and these were kept in the final processed data set.
 
-    ![Image: Ride durations more than 24 hours](./screenshots/rides_duration_24hr.jpg)
+    ![Image: Ride durations more than 24 hours](./rides_duration_24hr.jpg)
 
 5.  The previously collected trip data has been inner joined with avg_start_station and avg_end_station location data and exported to csv file for analysis using following SQL query:
 
@@ -195,7 +195,7 @@ df <- df %>%
   glimpse()
 ```
 
-![Glimpse of the data](./screenshots/glimpse_of_data.jpg)
+![Glimpse of the data](./glimpse_of_data.jpg)
 
 ### Renaming Columns for Easier Understanding
 
@@ -207,7 +207,7 @@ df <- rename(df,
 glimpse(df)
 ```
 
-![Glimpse after renaming columns](./screenshots/glimpse_renamed.jpg)
+![Glimpse after renaming columns](./glimpse_renamed.jpg)
 
 ### Basic Descriptive Analysis
 
@@ -220,7 +220,7 @@ df_min_max_time <- df %>%
 df_min_max_time
 ```
 
-![Average ride durations](./screenshots/basic_description.jpg)
+![Average ride durations](./basic_description.jpg)
 
 Since Cyclistic provides day passes, there are rides with more than 24 hour ride passes which are contributing in the higher value of max_ride_duration.
 
@@ -234,7 +234,7 @@ df_day_passes <- df %>%
 df_day_passes
 ```
 
-![Average number of day passes](./screenshots/day_passes.jpg)
+![Average number of day passes](./day_passes.jpg)
 
 #### Speculation
 
@@ -250,7 +250,7 @@ df_avg_time <- df %>% drop_na() %>%
 df_avg_time
 ```
 
-![Average ride duration](./screenshots/avg_ride_duration.jpg)
+![Average ride duration](./avg_ride_duration.jpg)
 
 #### Visualizing Average Ride Duration
 
@@ -264,7 +264,7 @@ ggplot(data = df_avg_time) + geom_col(mapping = aes(x = user_type, y = average_r
 
 ```
 
-![Image: Average ride duration](./plots/avg_ride_duration.jpg)
+![Image: Average ride duration](./avg_ride_duration.jpg)
 
 #### Speculation
 
@@ -288,7 +288,7 @@ weekly_ride_plot <- ggplot(df_weekly_count) +
 weekly_ride_plot
 ```
 
-![Image: Weekday-wise Ride Counts of Different Members](./plots/weekday_ride_counts.jpg)
+![Image: Weekday-wise Ride Counts of Different Members](./weekday_ride_counts.jpg)
 
 #### Speculation
 
@@ -309,7 +309,7 @@ monthly_ride_plot <- ggplot(df_monthly_count) +
 monthly_ride_plot
 ```
 
-![Image: Month-wise Ride Counts of Different Members](./plots/month_ride_counts.jpg)
+![Image: Month-wise Ride Counts of Different Members](./month_ride_counts.jpg)
 
 #### Speculation
 
@@ -331,7 +331,7 @@ hourly_ride_plot <- ggplot(df_hourly_count) +
 hourly_ride_plot
 ```
 
-![Image: Hour-wise Ride Counts of Different Members](./plots/hour_ride_counts.jpg)
+![Image: Hour-wise Ride Counts of Different Members](./hour_ride_counts.jpg)
 
 #### Speculation
 
@@ -350,7 +350,7 @@ routes_plot_start <- ggplot(df_routes_taken) + geom_bar(mapping = aes(y = start_
 
 routes_plot_start
 ```
-![Image: Popular start stations for member types](./plots/popular_start_stations.jpg)
+![Image: Popular start stations for member types](./popular_start_stations.jpg)
 
 ```{r Popular end stations for member types}
 # Popular end stations for member types
@@ -364,7 +364,7 @@ routes_plot_end <- ggplot(df_routes_ended) + geom_bar(mapping = aes(y = end_stat
 routes_plot_end
 ```
 
-![Image: Popular stations and member types](./plots/popular_end_stations.jpg)
+![Image: Popular stations and member types](./popular_end_stations.jpg)
 
 #### Speculation
 
@@ -385,7 +385,7 @@ ggplot(data = df_bike_choice) + geom_col(mapping = aes(x = bike_type, y = count_
                        x = "Type of bikes", y = "No. of rider types using bike")
 ```
 
-![Image: Preferred choice of bikes](./plots/bike_choice.jpg)
+![Image: Preferred choice of bikes](./bike_choice.jpg)
 
 #### Speculation
 
@@ -427,7 +427,7 @@ avg_distance_plot = ggplot(data=df_distance_summary) + geom_col(mapping = aes(x=
 avg_distance_plot
 ```
 
-![Image: Average distance traveled by user types](./plots/avg_distance_plot.jpg)
+![Image: Average distance traveled by user types](./avg_distance_plot.jpg)
 
 #### Speculation
 
