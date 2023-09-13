@@ -1,8 +1,7 @@
 ---
-
 Title: 'Case Study: How does a bike-share company navigate speedy success'
-Author: 'Kunal Bhatt
-Date: '20-08/2023'
+Author: 'Kunal Bhatt'
+Date: '20-08-2023'
 ---
 
 # Case study: How does a bike-share company navigate speedy success
